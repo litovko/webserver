@@ -1,11 +1,21 @@
 #ifndef LOGINCONTROLLER_H
 #define LOGINCONTROLLER_H
 
+#include "httprequesthandler.h"
+using namespace stefanfrings;
 
-class logincontroller : public public HttpRequestHandler
+
+class loginController : public  HttpRequestHandler
 {
+        Q_OBJECT
+        Q_DISABLE_COPY(loginController)
+
 public:
-    logincontroller();
+    loginController();
+
+    // HttpRequestHandler interface
+public:
+    virtual void service(HttpRequest &request, HttpResponse &response) override;
 };
 
 #endif // LOGINCONTROLLER_H

@@ -14,10 +14,10 @@
 #define APPNAME "webserver"
 
 /** Publisher of this application */
-#define ORGANISATION "Butterfly"
+#define ORGANISATION "AMTEL"
 
 /** Short description of the Windows service */
-#define DESCRIPTION "Demo application for QtWebApp"
+#define DESCRIPTION "Experimental web applitaion"
 
 /** Logger class */
 Logger* logger;

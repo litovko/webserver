@@ -8,6 +8,8 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
+#include "controllers/logincontroller.h"
+
 
 /** Logger class */
 extern Logger* logger;
@@ -44,12 +46,19 @@ void RequestHandler::service(HttpRequest& request, HttpResponse& response)
     response.setHeader("Content-Type", "application/json; charset=ISO-8859-1");
 
     // Return a simple HTML document
-    response.write(doc.toJson(),true);
-
+    //response.write(doc.toJson(),true);
+    if (path=="/api/v1/login") {
+        loginController().service(request,response);
+    }
     qDebug("Conroller: finished request");
-    qDebug()<<"=== header begin ===";
-    qDebug()<<request.getHeaderMap();
-    qDebug()<<"=== header  end  ===";
+    qDebug()<<"=== info begin ===";
+    qDebug()<<"Hdr map : "<<request.getHeaderMap();
+    qDebug()<<"Path    : "<<request.getPath();
+    qDebug()<<"Method  : "<<request.getMethod();
+    qDebug()<<"Raw path: "<<request.getRawPath();
+    qDebug()<<"Par map : "<<request.getParameterMap();
+    qDebug()<<"Body    : "<<request.getBody();
+    qDebug()<<"=== info  end  ===";
 
     // Clear the log buffer
     if (logger)

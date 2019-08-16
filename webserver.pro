@@ -7,10 +7,12 @@ QT = core network
 CONFIG += console
 
 HEADERS += \
+           src/controllers/logincontroller.h \
            src/startup.h \
            src/requesthandler.h
 
 SOURCES += src/main.cpp \
+           src/controllers/logincontroller.cpp \
            src/startup.cpp \
            src/requesthandler.cpp
 
