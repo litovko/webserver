@@ -3,13 +3,13 @@
   @author Stefan Frings
 */
 
-#include "static.h"
+//#include "static.h"
 #include "startup.h"
 #include "filelogger.h"
 #include "requesthandler.h"
 #include <QDir>
 #include <QFile>
-
+#include "cdatabase.h"
 /** Name of this application */
 #define APPNAME "webserver"
 
@@ -21,6 +21,7 @@
 
 /** Logger class */
 Logger* logger;
+cDatabase data;
 
 /** Search the configuration file */
 QString searchConfigFile()
