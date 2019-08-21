@@ -5,7 +5,7 @@ TARGET = webserver
 TEMPLATE = app
 QT = core network sql
 CONFIG += console
-
+QT_DEBUG_PLUGINS=1
 HEADERS += \
            src/controllers/logincontroller.h \
            src/db/cdatabase.h \

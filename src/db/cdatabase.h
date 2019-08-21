@@ -17,9 +17,9 @@ signals:
 
 public slots:
    QByteArray login(stefanfrings::HttpRequest& request);
-
+   QSqlDatabase get_db();
 public:
-    QSqlDatabase db;
+    //QSqlDatabase db;
     bool isopen() const;
     void setIsopen(bool isopen);
 };
