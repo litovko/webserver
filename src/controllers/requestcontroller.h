@@ -5,17 +5,19 @@
 using namespace stefanfrings;
 
 
-class loginController : public  HttpRequestHandler
+class requestController : public  HttpRequestHandler
 {
         Q_OBJECT
-        Q_DISABLE_COPY(loginController)
+        Q_DISABLE_COPY(requestController)
+private:
 
 public:
-    loginController();
+    requestController();
 
     // HttpRequestHandler interface
 public:
     virtual void service(HttpRequest &request, HttpResponse &response) override;
+
 };
 
 #endif // LOGINCONTROLLER_H

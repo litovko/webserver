@@ -7,13 +7,13 @@ QT = core network sql
 CONFIG += console
 QT_DEBUG_PLUGINS=1
 HEADERS += \
-           src/controllers/logincontroller.h \
+           src/controllers/requestcontroller.h \
            src/db/cdatabase.h \
            src/startup.h \
            src/requesthandler.h
 
 SOURCES += src/main.cpp \
-           src/controllers/logincontroller.cpp \
+           src/controllers/requestcontroller.cpp \
            src/db/cdatabase.cpp \
            src/startup.cpp \
            src/requesthandler.cpp
