@@ -6,8 +6,8 @@
 #include <QJsonObject>
 #include <QThread>\
 
-//#define DB_SERVER_HOST "192.168.224.57"
-#define DB_SERVER_HOST "localhost"
+#define DB_SERVER_HOST "192.168.224.53"
+//#define DB_SERVER_HOST "localhost"
 #define DB_DBNAME "dsydb"
 #define DB_USERNAME "postgres"
 #define DB_USERPASS "12345678"
