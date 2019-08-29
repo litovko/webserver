@@ -22,20 +22,21 @@ void requestController::service(HttpRequest &request, HttpResponse &response)
     }
     if (path.indexOf("/api/v1/file")==0) {
        //response.write("{\"good\":\"well\"}");
-        QString fn="file"; //request.getParameterMap().begin().key()
-        qDebug()<<"uploaded file:"<<fn;
-        QTemporaryFile* file=request.getUploadedFile(fn.toLatin1());
-                if (file)
-                {
-                    qDebug()<<"file link:"<<file->fileName();
-                    auto s="D:/tmp/"+request.getParameterMap().begin().value();
-                    QFile::copy(file->fileName(), s);
-                        response.write("{\"filename\":\""+s+"\"}");
-                }
-                else
-                {
-                    response.write("upload failed");
-                }
+        QByteArray fn="file"; //request.getParameterMap().begin().key()
+        qDebug()<<"uploaded file:"<<request.getParameterMap().value(fn);
+        QTemporaryFile* file=request.getUploadedFile(fn);
+        if (file)
+        {
+            qDebug()<<"file link:"<<file->fileName();
+            auto s="D:/tmp/"+(request.getParameterMap()).value(fn);
+            qDebug()<<"file link:"<<file->fileName()<<"target file:"<<s;
+            QFile::copy(file->fileName(), s);
+            response.write("{\"filename\":\""+s+"\"}");
+        }
+        else
+        {
+            response.write("upload failed");
+        }
     }
     //curl -d {\"pkey\":\"G&jK\",\"task\":\"1\",\"file\":\"/path/filename\"}  -H "Content-type: application/json; charset=utf-8" -H "Accept: application/json"  https://localhost/api/v1/task?appid=FFF01 -k
 
