@@ -50,17 +50,19 @@ void RequestHandler::service(HttpRequest& request, HttpResponse& response)
     // Return a simple HTML document
     //response.write(doc.toJson(),true);
 
-        requestController().service(request,response);
-
 //    qDebug("Conroller: finished request");
-//    qDebug()<<"=== info begin ===";
-//    qDebug()<<"Hdr map : "<<request.getHeaderMap();
-//    qDebug()<<"Path    : "<<request.getPath();
-//    qDebug()<<"Method  : "<<request.getMethod();
-//    qDebug()<<"Raw path: "<<request.getRawPath();
-//    qDebug()<<"Par map : "<<request.getParameterMap();
-//    qDebug()<<"Body    : "<<request.getBody();
-//    qDebug()<<"=== info  end  ===";
+    qDebug()<<"=== info begin ===";
+    qDebug()<<"Hdr map : "<<request.getHeaderMap();
+    qDebug()<<"Path    : "<<request.getPath();
+    qDebug()<<"Method  : "<<request.getMethod();
+    qDebug()<<"Raw path: "<<request.getRawPath();
+    qDebug()<<"Par map : "<<request.getParameterMap();
+    qDebug()<<"First param:"<< request.getParameterMap().begin().key();
+    //qDebug()<<"Body    : "<<request.getBody();
+     //qDebug()<<request.getUploadedFile(request.getParameterMap().begin().value())->fileName();
+    qDebug()<<"=== info  end  ===";
+    requestController().service(request,response);
+
 
     // Clear the log buffer
     if (logger)

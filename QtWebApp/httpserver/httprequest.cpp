@@ -454,6 +454,7 @@ void HttpRequest::parseMultiPartFile()
         QByteArray fieldValue;
         while (!tempFile->atEnd() && !finished && !tempFile->error())
         {
+
             QByteArray line=tempFile->readLine(65536);
             if (line.startsWith("--"+boundary))
             {

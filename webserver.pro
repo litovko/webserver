@@ -6,6 +6,7 @@ TEMPLATE = app
 QT = core network sql
 CONFIG += console
 QT_DEBUG_PLUGINS=1
+DEFINES += SUPERVERBOSE
 HEADERS += \
            src/controllers/requestcontroller.h \
            src/db/cdatabase.h \

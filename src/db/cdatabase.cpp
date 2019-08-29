@@ -84,9 +84,11 @@ QByteArray cDatabase::tasks(stefanfrings::HttpRequest &request, QString &path)
     QString param="";
     auto db=get_db();
     qDebug()<<Q_FUNC_INFO;
+    //qDebug()<< request.getBody().replace('\"','"');
     QJsonDocument doc = QJsonDocument::fromJson(request.getBody());
     if (doc.isNull()) {
         qWarning()<<"bad parsing:"<<Q_FUNC_INFO;;
+
         return error("tasks", 1000);
     }
     if (request.getMethod()=="GET") {  //список задач, пока смотрим только для конкретного пользователя
@@ -95,7 +97,7 @@ QByteArray cDatabase::tasks(stefanfrings::HttpRequest &request, QString &path)
             param=param+" and t."+el.first+" = "+el.second+" ";
         qDebug()<<"GET:"<<"param:"<<param;
         sql="select json_agg(s) as tasks "
-            "from (select t.id, t.uid, t.state_id, t.type, t.param, t.created_at, t.updated_at, t.completed_at from tasks t, users u where t.uid=u.id and u.pkey='"
+            "from (select t.id, t.uid, t.state_id, t.type, t.param, t.result, t.created_at, t.updated_at, t.completed_at from tasks t, users u where t.uid=u.id and u.pkey='"
                 + doc["pkey"].toString() +"' "
                 + param
                 + ")s";
